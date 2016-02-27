@@ -3,18 +3,21 @@ using System;
 
 public class ShapeManager : MonoBehaviour
 {
-    public GameObject startingObject;
+    public GameObject StartingObject;
+    public GameObject ActiveShape { get; private set; }
 
-    public void Start()
+    private void Start()
     {
         // Initialize shapes
-        if (startingObject == null)
+        if (StartingObject == null)
         {
             throw new InvalidOperationException("startingObject must be set in editor.");
         }
 
-        startingObject.transform.position = new Vector2(0, 10);
-        startingObject = Instantiate(startingObject);
+        StartingObject.transform.position = new Vector2(0, 10);
+        StartingObject = Instantiate(StartingObject);
+
+        ActiveShape = StartingObject;
 
         // Begin updates, and repeat every second
         InvokeRepeating("UpdateShapes", 1f, 1f);
@@ -22,8 +25,8 @@ public class ShapeManager : MonoBehaviour
 
     private void UpdateShapes()
     {
-        Vector3 position = startingObject.transform.position;
-        startingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
-        Debug.Log(startingObject.transform.position);
+        Vector3 position = StartingObject.transform.position;
+        StartingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
+        Debug.Log(StartingObject.transform.position);
     }
 }
