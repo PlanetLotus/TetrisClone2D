@@ -4,7 +4,39 @@ using System;
 public class ShapeManager : MonoBehaviour
 {
     public GameObject StartingObject;
-    public GameObject ActiveShape { get; private set; }
+
+    public void MoveActiveShapeDown()
+    {
+        if (activeShape == null)
+        {
+            return;
+        }
+
+        Vector3 position = activeShape.transform.position;
+        activeShape.transform.position = new Vector3(position.x, position.y - 1, 0);
+    }
+
+    public void MoveActiveShapeLeft()
+    {
+        if (activeShape == null)
+        {
+            return;
+        }
+
+        Vector3 position = activeShape.transform.position;
+        activeShape.transform.position = new Vector3(position.x - 1, position.y, 0);
+    }
+
+    public void MoveActiveShapeRight()
+    {
+        if (activeShape == null)
+        {
+            return;
+        }
+
+        Vector3 position = activeShape.transform.position;
+        activeShape.transform.position = new Vector3(position.x + 1, position.y, 0);
+    }
 
     private void Start()
     {
@@ -17,7 +49,7 @@ public class ShapeManager : MonoBehaviour
         StartingObject.transform.position = new Vector2(0, 10);
         StartingObject = Instantiate(StartingObject);
 
-        ActiveShape = StartingObject;
+        activeShape = StartingObject;
 
         // Begin updates, and repeat every second
         InvokeRepeating("UpdateShapes", 1f, 1f);
@@ -29,4 +61,6 @@ public class ShapeManager : MonoBehaviour
         StartingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
         Debug.Log(StartingObject.transform.position);
     }
+
+    private GameObject activeShape;
 }
