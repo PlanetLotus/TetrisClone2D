@@ -38,6 +38,16 @@ public class ShapeManager : MonoBehaviour
         activeShape.transform.position = new Vector3(position.x + 1, position.y, 0);
     }
 
+    public void RotateActiveShape()
+    {
+        if (activeShape == null)
+        {
+            return;
+        }
+
+        activeShape.transform.Rotate(0, 0, 90);
+    }
+
     private void Start()
     {
         // Initialize shapes

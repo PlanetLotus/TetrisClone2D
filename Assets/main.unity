@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eea0de6a519a7a4ab3fee03bb452ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingObject: {fileID: 183574, guid: d4bcdd2321d11ac43b2ecebf5e21d8f0, type: 2}
+  StartingObject: {fileID: 162796, guid: 93dc6998b49fdf54b97db58cdc4a0838, type: 2}
 --- !u!4 &1474497895
 Transform:
   m_ObjectHideFlags: 0

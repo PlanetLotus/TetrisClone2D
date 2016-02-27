@@ -21,6 +21,10 @@ public class PlayerManager : MonoBehaviour
         {
             shapeManager.MoveActiveShapeRight();
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shapeManager.RotateActiveShape();
+        }
     }
 
     private GameObject activeShape;
