@@ -4,6 +4,7 @@ using System;
 public class ShapeManager : MonoBehaviour
 {
     public GameObject StartingObject;
+    public bool DisableGravity;
 
     public void MoveActiveShapeDown()
     {
@@ -67,9 +68,11 @@ public class ShapeManager : MonoBehaviour
 
     private void UpdateShapes()
     {
-        Vector3 position = StartingObject.transform.position;
-        StartingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
-        Debug.Log(StartingObject.transform.position);
+        if (!DisableGravity)
+        {
+            Vector3 position = StartingObject.transform.position;
+            StartingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
+        }
     }
 
     private GameObject activeShape;
