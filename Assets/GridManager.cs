@@ -3,7 +3,7 @@
 public class GridManager : MonoBehaviour
 {
     public const int MinX = 0;
-    public const int MaxX = 9;
+    public const int MaxX = 10;
     public const int MinY = 0;
 
     public bool IsValidPosition(Transform transform)
