@@ -95,8 +95,6 @@ GameObject:
   - 4: {fileID: 336453486}
   - 20: {fileID: 336453485}
   - 124: {fileID: 336453484}
-  - 92: {fileID: 336453483}
-  - 81: {fileID: 336453482}
   m_Layer: 0
   m_Name: Background Camera
   m_TagString: Untagged
@@ -104,20 +102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &336453482
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 336453481}
-  m_Enabled: 1
---- !u!92 &336453483
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 336453481}
-  m_Enabled: 1
 --- !u!124 &336453484
 Behaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +370,7 @@ GameObject:
   - 4: {fileID: 1474497895}
   - 114: {fileID: 1474497894}
   - 114: {fileID: 1474497896}
+  - 114: {fileID: 1474497897}
   m_Layer: 0
   m_Name: _root
   m_TagString: Untagged
@@ -436,6 +421,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0264b314f648f2459ddc3a02fa165d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1474497897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1474497893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55707eec8675b124ab2278ca491b03cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1503822509
