@@ -78,7 +78,7 @@ public class ShapeManager : MonoBehaviour
             throw new InvalidOperationException("startingObject must be set in editor.");
         }
 
-        StartingObject.transform.position = new Vector2(0, 10);
+        StartingObject.transform.position = new Vector2(0, 20);
         StartingObject = Instantiate(StartingObject);
 
         activeShape = StartingObject;
