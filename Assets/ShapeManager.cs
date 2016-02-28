@@ -3,6 +3,7 @@ using System;
 
 public class ShapeManager : MonoBehaviour
 {
+    public GameObject[] Shapes;
     public GameObject StartingObject;
     public bool DisableGravity;
     public bool DisableSpawning;
@@ -79,6 +80,8 @@ public class ShapeManager : MonoBehaviour
             throw new InvalidOperationException("startingObject must be set in editor.");
         }
 
+        gridManager = GetComponent<GridManager>();
+
         StartingObject.transform.position = new Vector2(0, 20);
         activeShape = Instantiate(StartingObject);
 
@@ -119,4 +122,5 @@ public class ShapeManager : MonoBehaviour
     }
 
     private GameObject activeShape;
+    private GridManager gridManager;
 }

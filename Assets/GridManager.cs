@@ -6,6 +6,8 @@ public class GridManager : MonoBehaviour
     public const int MaxX = 10;
     public const int MinY = 0;
 
+    public bool[,] Grid = new bool[Width, Height];
+
     private void Start()
     {
     }
@@ -14,4 +16,7 @@ public class GridManager : MonoBehaviour
     {
         // Check for completed rows and clear them
     }
+
+    private const int Width = 10;
+    private const int Height = 20;
 }
