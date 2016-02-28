@@ -36,7 +36,7 @@ public class GridManager : MonoBehaviour
     }
 
     private const int Width = 10;
-    private const int Height = 20;
+    private const int Height = 24;
 
     // Each transform is a block, not the entire shape
     // Instead of just setting a flag here, having the actual object helps
