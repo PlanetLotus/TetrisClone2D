@@ -5,6 +5,7 @@ public class ShapeManager : MonoBehaviour
 {
     public GameObject StartingObject;
     public bool DisableGravity;
+    public bool DisableSpawning;
 
     public void MoveActiveShapeDown()
     {
@@ -79,9 +80,7 @@ public class ShapeManager : MonoBehaviour
         }
 
         StartingObject.transform.position = new Vector2(0, 20);
-        StartingObject = Instantiate(StartingObject);
-
-        activeShape = StartingObject;
+        activeShape = Instantiate(StartingObject);
 
         // Begin updates, and repeat every second
         InvokeRepeating("UpdateShapes", 1f, 1f);
@@ -89,7 +88,7 @@ public class ShapeManager : MonoBehaviour
 
     private void UpdateShapes()
     {
-        if (!DisableGravity)
+        if (!DisableGravity && activeShape != null)
         {
             Vector3 position = activeShape.transform.position;
             float newY = position.y - 1;
@@ -97,14 +96,26 @@ public class ShapeManager : MonoBehaviour
             // Stop falling if we've reached the bottom
             if (newY < GridManager.MinY)
             {
-                CancelInvoke();
                 activeShape = null;
+                SpawnNextShape();
             }
             else
             {
                 activeShape.transform.position = new Vector3(position.x, position.y - 1, 0);
             }
         }
+    }
+
+    private void SpawnNextShape()
+    {
+        if (DisableSpawning)
+        {
+            return;
+        }
+
+        GameObject shape = (GameObject)Resources.Load("I");
+        shape.transform.position = new Vector2(0, 20);
+        activeShape = Instantiate(shape);
     }
 
     private GameObject activeShape;
