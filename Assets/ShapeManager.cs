@@ -14,7 +14,14 @@ public class ShapeManager : MonoBehaviour
         }
 
         Vector3 position = activeShape.transform.position;
-        activeShape.transform.position = new Vector3(position.x, position.y - 1, 0);
+        float newY = position.y - 1;
+
+        if (newY < GridManager.MinY)
+        {
+            return;
+        }
+
+        activeShape.transform.position = new Vector3(position.x, newY, 0);
     }
 
     public void MoveActiveShapeLeft()
@@ -25,7 +32,14 @@ public class ShapeManager : MonoBehaviour
         }
 
         Vector3 position = activeShape.transform.position;
-        activeShape.transform.position = new Vector3(position.x - 1, position.y, 0);
+        float newX = position.x - 1;
+
+        if (newX < GridManager.MinX)
+        {
+            return;
+        }
+
+        activeShape.transform.position = new Vector3(newX, position.y, 0);
     }
 
     public void MoveActiveShapeRight()
@@ -36,7 +50,14 @@ public class ShapeManager : MonoBehaviour
         }
 
         Vector3 position = activeShape.transform.position;
-        activeShape.transform.position = new Vector3(position.x + 1, position.y, 0);
+        float newX = position.x + 1;
+
+        if (newX > GridManager.MaxX)
+        {
+            return;
+        }
+
+        activeShape.transform.position = new Vector3(newX, position.y, 0);
     }
 
     public void RotateActiveShape()
@@ -70,8 +91,19 @@ public class ShapeManager : MonoBehaviour
     {
         if (!DisableGravity)
         {
-            Vector3 position = StartingObject.transform.position;
-            StartingObject.transform.position = new Vector3(position.x, position.y - 1, 0);
+            Vector3 position = activeShape.transform.position;
+            float newY = position.y - 1;
+
+            // Stop falling if we've reached the bottom
+            if (newY < GridManager.MinY)
+            {
+                CancelInvoke();
+                activeShape = null;
+            }
+            else
+            {
+                activeShape.transform.position = new Vector3(position.x, position.y - 1, 0);
+            }
         }
     }
 
