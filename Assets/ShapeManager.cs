@@ -18,7 +18,7 @@ public class ShapeManager : MonoBehaviour
         activeShape.transform.position += new Vector3(0, -1);
         if (IsUpdateValid(activeShape.transform))
         {
-            // Update grid
+            UpdatePosition(activeShape.transform);
         }
         else
         {
@@ -37,7 +37,7 @@ public class ShapeManager : MonoBehaviour
         activeShape.transform.position += new Vector3(-1, 0);
         if (IsUpdateValid(activeShape.transform))
         {
-            // Update grid
+            UpdatePosition(activeShape.transform);
         }
         else
         {
@@ -56,7 +56,7 @@ public class ShapeManager : MonoBehaviour
         activeShape.transform.position += new Vector3(1, 0);
         if (IsUpdateValid(activeShape.transform))
         {
-            // Update grid
+            UpdatePosition(activeShape.transform);
         }
         else
         {
@@ -96,18 +96,17 @@ public class ShapeManager : MonoBehaviour
     {
         if (!DisableGravity && activeShape != null)
         {
-            Vector3 position = activeShape.transform.position;
-            float newY = position.y - 1;
-
-            // Stop falling if we've reached the bottom
-            if (newY < GridManager.MinY)
+            activeShape.transform.position += new Vector3(0, -1);
+            if (IsUpdateValid(activeShape.transform))
             {
-                activeShape = null;
-                SpawnNextShape();
+                UpdatePosition(activeShape.transform);
             }
             else
             {
-                activeShape.transform.position = new Vector3(position.x, position.y - 1, 0);
+                // Collision detected
+                activeShape.transform.position += new Vector3(0, 1);
+                activeShape = null;
+                SpawnNextShape();
             }
         }
     }
@@ -136,6 +135,14 @@ public class ShapeManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void UpdatePosition(Transform parent)
+    {
+        foreach (Transform block in GetBlocks(activeShape.transform))
+        {
+            gridManager.UpdatePosition(block);
+        }
     }
 
     private static Transform[] GetBlocks(Transform parent)
