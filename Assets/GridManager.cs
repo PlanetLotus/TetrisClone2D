@@ -33,6 +33,10 @@ public class GridManager : MonoBehaviour
 
     private void UnsetOldPosition(Transform transform)
     {
+        // This would be much better if the old position were passed in,
+        // but we can't assume that that position hasn't already been taken up by
+        // another block if this isn't the first block in the shape. We'd need to unset
+        // them all first.
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < Height; y++)
