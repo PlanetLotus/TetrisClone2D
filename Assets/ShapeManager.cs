@@ -74,10 +74,20 @@ public class ShapeManager : MonoBehaviour
 
         Vector3 rotationPoint = GetRotationPoint(activeShape);
         activeShape.transform.RotateAround(activeShape.transform.position + rotationPoint, new Vector3(0, 0, 1), 90);
-        activeShapeRotationIndex++;
-        if (activeShapeRotationIndex == NumRotations)
+
+        if (IsUpdateValid(activeShape.transform))
         {
-            activeShapeRotationIndex = 0;
+            UpdatePosition(activeShape.transform);
+
+            activeShapeRotationIndex++;
+            if (activeShapeRotationIndex == NumRotations)
+            {
+                activeShapeRotationIndex = 0;
+            }
+        }
+        else
+        {
+            activeShape.transform.RotateAround(activeShape.transform.position + rotationPoint, new Vector3(0, 0, 1), -90);
         }
     }
 
