@@ -155,75 +155,93 @@ public class ShapeManager : MonoBehaviour
             switch (activeShapeRotationIndex)
             {
                 case 0:
-                case 1:
-                case 2:
-                case 3:
                     return new Vector3(0, 2);
+                case 1:
+                    return new Vector3(-2, 0);
+                case 2:
+                    return new Vector3(0, -2);
+                case 3:
+                    return new Vector3(2, 0);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
         }
         else if (shape.name.StartsWith("J"))
         {
-            switch ((int)shape.transform.rotation.z)
+            switch (activeShapeRotationIndex)
             {
                 case 0:
+                    return new Vector3(1.5f, 1.5f);
                 case 1:
+                    return new Vector3(-1.5f, 1.5f);
                 case 2:
+                    return new Vector3(-1.5f, -1.5f);
                 case 3:
-                    return new Vector3(0, 2);
+                    return new Vector3(1.5f, -1.5f);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
         }
         else if (shape.name.StartsWith("L"))
         {
-            switch ((int)shape.transform.rotation.z)
+            switch (activeShapeRotationIndex)
             {
                 case 0:
+                    return new Vector3(0.5f, 1.5f);
                 case 1:
+                    return new Vector3(-1.5f, 0.5f);
                 case 2:
+                    return new Vector3(-0.5f, -1.5f);
                 case 3:
-                    return new Vector3(0, 2);
+                    return new Vector3(1.5f, -0.5f);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
         }
         else if (shape.name.StartsWith("O"))
         {
-            switch ((int)shape.transform.rotation.z)
+            switch (activeShapeRotationIndex)
             {
                 case 0:
+                    return new Vector3(1, 1);
                 case 1:
+                    return new Vector3(-1, 1);
                 case 2:
+                    return new Vector3(-1, -1);
                 case 3:
-                    return new Vector3(0, 2);
+                    return new Vector3(1, -1);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
         }
         else if (shape.name.StartsWith("S"))
         {
-            switch ((int)shape.transform.rotation.z)
+            switch (activeShapeRotationIndex)
             {
                 case 0:
+                    return new Vector3(1.5f, 0.5f);
                 case 1:
+                    return new Vector3(-1.5f, 1.5f);
                 case 2:
+                    return new Vector3(-1.5f, -0.5f);
                 case 3:
-                    return new Vector3(0, 2);
+                    return new Vector3(1.5f, -1.5f);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
         }
         else if (shape.name.StartsWith("Z"))
         {
-            switch ((int)shape.transform.rotation.z)
+            switch (activeShapeRotationIndex)
             {
                 case 0:
+                    return new Vector3(1.5f, 0.5f);
                 case 1:
+                    return new Vector3(-1.5f, 1.5f);
                 case 2:
+                    return new Vector3(-1.5f, -0.5f);
                 case 3:
-                    return new Vector3(0, 2);
+                    return new Vector3(1.5f, -1.5f);
                 default:
                     throw new InvalidOperationException(string.Format("Unexpected rotation index: {0}", activeShapeRotationIndex));
             }
