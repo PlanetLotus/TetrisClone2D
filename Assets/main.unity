@@ -397,7 +397,7 @@ MonoBehaviour:
   - {fileID: 193632, guid: 52c5d54b53dd8c0418858378def292e3, type: 2}
   - {fileID: 182992, guid: 04c9da92e683f0144808a645df0e9bce, type: 2}
   - {fileID: 172090, guid: 707b4239e52c17c40990585d23f5ea4d, type: 2}
-  StartingObject: {fileID: 107524, guid: 875425ac01c75bf49bb71d6c96579998, type: 2}
+  StartingObject: {fileID: 0}
   DisableGravity: 0
   DisableSpawning: 0
 --- !u!4 &1474497895

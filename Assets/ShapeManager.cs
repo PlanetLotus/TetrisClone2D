@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
+using Random = System.Random;
+
 public class ShapeManager : MonoBehaviour
 {
     public GameObject[] Shapes;
@@ -98,16 +100,19 @@ public class ShapeManager : MonoBehaviour
 
     private void Start()
     {
-        // Initialize shapes
-        if (StartingObject == null)
-        {
-            throw new InvalidOperationException("startingObject must be set in editor.");
-        }
 
         gridManager = GetComponent<GridManager>();
 
-        StartingObject.transform.position = new Vector2(0, 20);
-        activeShape = Instantiate(StartingObject);
+        // Initialize shapes
+        if (StartingObject == null)
+        {
+            SpawnNextShape();
+        }
+        else
+        {
+            StartingObject.transform.position = new Vector2(0, 20);
+            activeShape = Instantiate(StartingObject);
+        }
 
         // Begin updates, and repeat every second
         InvokeRepeating("UpdateShapes", 1f, 1f);
@@ -140,9 +145,12 @@ public class ShapeManager : MonoBehaviour
             return;
         }
 
-        GameObject shape = (GameObject)Resources.Load("I");
-        shape.transform.position = new Vector2(0, 20);
-        activeShape = Instantiate(shape);
+        Random random = new Random();
+        int randomIndex = random.Next(Shapes.Length);
+        GameObject randomShape = Shapes[randomIndex];
+
+        randomShape.transform.position = new Vector2(0, 20);
+        activeShape = Instantiate(randomShape);
     }
 
     private Vector3 GetRotationPoint(GameObject shape)
