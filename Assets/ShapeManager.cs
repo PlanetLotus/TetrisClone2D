@@ -72,6 +72,10 @@ public class ShapeManager : MonoBehaviour
             return;
         }
 
+        // Position and rotation are value types so this actually copies the value, not the reference
+        Vector3 oldPosition = activeShape.transform.position;
+        Quaternion oldRotation = activeShape.transform.rotation;
+
         Vector3 rotationPoint = GetRotationPoint(activeShape);
         activeShape.transform.RotateAround(activeShape.transform.position + rotationPoint, new Vector3(0, 0, 1), 90);
 
@@ -87,7 +91,8 @@ public class ShapeManager : MonoBehaviour
         }
         else
         {
-            activeShape.transform.RotateAround(activeShape.transform.position + rotationPoint, new Vector3(0, 0, 1), -90);
+            activeShape.transform.position = oldPosition;
+            activeShape.transform.rotation = oldRotation;
         }
     }
 
