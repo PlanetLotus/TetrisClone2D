@@ -31,6 +31,32 @@ public class GridManager : MonoBehaviour
         grid[(int)transform.position.x, (int)transform.position.y] = transform;
     }
 
+    public void ClearFullRows()
+    {
+        for (int y = 0; y < Height; y++)
+        {
+            bool rowIsFull = true;
+
+            for (int x = 0; x < Width; x++)
+            {
+                if (grid[x, y] == null)
+                {
+                    rowIsFull = false;
+                    break;
+                }
+            }
+
+            if (rowIsFull)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    Destroy(grid[x, y].gameObject);
+                    grid[x, y] = null;
+                }
+            }
+        }
+    }
+
     private void UnsetOldPosition(Transform transform)
     {
         // This would be much better if the old position were passed in,
@@ -48,15 +74,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-        // Check for completed rows and clear them
     }
 
     private const int Width = 10;

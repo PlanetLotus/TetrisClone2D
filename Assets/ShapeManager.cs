@@ -140,6 +140,7 @@ public class ShapeManager : MonoBehaviour
                 activeShape.transform.position += new Vector3(0, 1);
                 activeShape = null;
                 activeShapeRotationIndex = 0;
+                gridManager.ClearFullRows();
                 SpawnNextShape();
             }
         }
@@ -317,12 +318,12 @@ public class ShapeManager : MonoBehaviour
 
     private void SpawnTestRows()
     {
-        // Spawn a nearly-complete row of squares along the bottom
-        GameObject O = (GameObject)Resources.Load("O");
-        for (int i = 0; i < 7; i += 2)
+        // Spawn a nearly-complete row along the bottom
+        GameObject I = (GameObject)Resources.Load("I");
+        for (int i = 0; i < 8; i++)
         {
-            O.transform.position = new Vector3(i, 0);
-            GameObject testShape = Instantiate(O);
+            I.transform.position = new Vector3(i, 0);
+            GameObject testShape = Instantiate(I);
             UpdatePosition(testShape.transform);
         }
     }
