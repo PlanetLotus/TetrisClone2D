@@ -9,6 +9,7 @@ public class ShapeManager : MonoBehaviour
     public GameObject StartingObject;
     public bool DisableGravity;
     public bool DisableSpawning;
+    public bool TestRows;
 
     public void MoveActiveShapeDown()
     {
@@ -100,8 +101,14 @@ public class ShapeManager : MonoBehaviour
 
     private void Start()
     {
-
         gridManager = GetComponent<GridManager>();
+
+        // Spawn two nearly-complete rows with the next shape as an O for testing
+        if (TestRows)
+        {
+            StartingObject = (GameObject)Resources.Load("O");
+            SpawnTestRows();
+        }
 
         // Initialize shapes
         if (StartingObject == null)
@@ -278,7 +285,7 @@ public class ShapeManager : MonoBehaviour
     // Checks all children of shape to make sure they all move to a valid grid location
     private bool IsUpdateValid(Transform parent)
     {
-        foreach (Transform block in GetBlocks(activeShape.transform))
+        foreach (Transform block in GetBlocks(parent))
         {
             if (!gridManager.IsValidPosition(block))
             {
@@ -291,7 +298,7 @@ public class ShapeManager : MonoBehaviour
 
     private void UpdatePosition(Transform parent)
     {
-        foreach (Transform block in GetBlocks(activeShape.transform))
+        foreach (Transform block in GetBlocks(parent))
         {
             gridManager.UpdatePosition(block);
         }
@@ -306,6 +313,18 @@ public class ShapeManager : MonoBehaviour
         }
 
         return blocks;
+    }
+
+    private void SpawnTestRows()
+    {
+        // Spawn a nearly-complete row of squares along the bottom
+        GameObject O = (GameObject)Resources.Load("O");
+        for (int i = 0; i < 7; i += 2)
+        {
+            O.transform.position = new Vector3(i, 0);
+            GameObject testShape = Instantiate(O);
+            UpdatePosition(testShape.transform);
+        }
     }
 
     private GameObject activeShape;

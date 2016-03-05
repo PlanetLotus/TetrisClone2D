@@ -400,6 +400,7 @@ MonoBehaviour:
   StartingObject: {fileID: 0}
   DisableGravity: 0
   DisableSpawning: 0
+  TestRows: 1
 --- !u!4 &1474497895
 Transform:
   m_ObjectHideFlags: 0
